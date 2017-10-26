@@ -17,27 +17,27 @@ User-related endpoints
 
 + Response 200 (application/json)
 
-  {
-    'id': 1,
-    'username': 'Johnny',
-    'email': 'John@gmail.com',
-    'confirmed': true,
-    'registationDate': 2017-10-26T16:51:59.000Z,
-    'avatar': 'http://avatars.com/1.jpg',
-    'backgroundPicture': 'http://hotbgpics.com/12.png',
-    'country': 'USA',
-    'dateOfBirth': 1982-01-01T00:00:00.000Z,
-    'bio': 'a short bio',
-    'premium': false,
-    'role': 'user',
-    'silver': 1220,
-    'sapphires': 100,
-    'items': {
-      'ingredients': [],
-      'items': []
-    },
-    dragons: []
-  }
+    {
+      'id': 1,
+      'username': 'Johnny',
+      'email': 'John@gmail.com',
+      'confirmed': true,
+      'registationDate': 2017-10-26T16:51:59.000Z,
+      'avatar': 'http://avatars.com/1.jpg',
+      'backgroundPicture': 'http://hotbgpics.com/12.png',
+      'country': 'USA',
+      'dateOfBirth': 1982-01-01T00:00:00.000Z,
+      'bio': 'a short bio',
+      'premium': false,
+      'role': 'user',
+      'silver': 1220,
+      'sapphires': 100,
+      'items': {
+        'ingredients': [],
+        'items': []
+      },
+      dragons: []
+    }
 
 ### Update user profile
 
@@ -55,31 +55,31 @@ Takes a object with fields to update, ignores restricted fields
 
   + Body
 
-    {
-      'username': 'Jason',
-      'email': 'ja@gmail.com',
-      'password': '123'
-    }
+      {
+        'username': 'Jason',
+        'email': 'ja@gmail.com',
+        'password': '123'
+      }
 
   + Schema
 
-    {
-      'type': 'object',
-      'properties': {
-        'username': {
-          'type': 'string',
-          'minLength': 3,
-          'maxLength': 30
-        },
-        'email': {
-          'type': 'string'
-        },
-        'password': {
-          'type': 'string',
-          'minLength': 3
+      {
+        'type': 'object',
+        'properties': {
+          'username': {
+            'type': 'string',
+            'minLength': 3,
+            'maxLength': 30
+          },
+          'email': {
+            'type': 'string'
+          },
+          'password': {
+            'type': 'string',
+            'minLength': 3
+          }
         }
       }
-    }
 
 + Response 201 (application/json)
 Responds with newly created user data
