@@ -1,0 +1,33 @@
+FORMAT: 1A
+
+# Api
+
+This is the main entrypoint of the api, it handles auth and routing to other
+services
+
+## Group Account
+
+Account-related endpoints
+
+## Login [/login]
+
+### Login to an account [POST]
+
++ Request (application/json)
+
+  + Body
+
+        {
+          'email': 'john@gmail.com',
+          'password': 'johnjava'
+        }
+
++ Response 400 (application/json)
+Missing or wrong data
+
++ Response 200 (application/json)
+Login was successfull, responds with the user object
+
+## Reset password [POST]
+
+### TODO
