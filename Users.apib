@@ -11,7 +11,14 @@ User-related endpoints
 ## User [/users/{user_id}]
 
 + Parameters
-  + user_id: 1 (required, number) - ID of the user
+
+    + user_id: 1 (required, number) - ID of the user
+
++ Request (application/json)
+
+    + Headers
+
+        Authentication: Bearer <token>
 
 ### View a users profile [GET]
 
@@ -36,7 +43,7 @@ User-related endpoints
             'ingredients': [],
             'items': []
           },
-          dragons: []
+          'dragons': []
         }
 
 ### Update user profile
@@ -46,46 +53,3 @@ Takes a object with fields to update, ignores restricted fields
 + Response 200 (application/json)
   
   Returns full user object with updated fields
-
-## Create user [/users/create]
-
-### Create a new user [POST]
-
-+ Request (application/json)
-
-  + Body
-
-        {
-          'username': 'Jason',
-          'email': 'ja@gmail.com',
-          'password': '123'
-        }
-
-  + Schema
-
-        {
-          'type': 'object',
-          'properties': {
-            'username': {
-              'type': 'string',
-              'minLength': 3,
-              'maxLength': 30
-            },
-            'email': {
-              'type': 'string'
-            },
-            'password': {
-              'type': 'string',
-              'minLength': 3
-            }
-          }
-        }
-
-+ Response 201 (application/json)
-Responds with newly created user data
-
-+ Response 409 (application/json)
-Email is already taken
-
-+ Response 400 (application/json)
-Missing or wrong data

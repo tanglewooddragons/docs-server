@@ -9,6 +9,49 @@ services
 
 Account-related endpoints
 
+## Register [/register]
+
+### Create a new account [POST]
+
++ Request (application/json)
+
+  + Body
+
+        {
+          'username': 'Jason',
+          'email': 'ja@gmail.com',
+          'password': '123'
+        }
+
+  + Schema
+
+        {
+          'type': 'object',
+          'properties': {
+            'username': {
+              'type': 'string',
+              'minLength': 3,
+              'maxLength': 30
+            },
+            'email': {
+              'type': 'string'
+            },
+            'password': {
+              'type': 'string',
+              'minLength': 3
+            }
+          }
+        }
+
++ Response 201 (application/json)
+Responds with newly created user data
+
++ Response 409 (application/json)
+Email is already taken
+
++ Response 400 (application/json)
+Missing or wrong data
+
 ## Login [/login]
 
 ### Login to an account [POST]
