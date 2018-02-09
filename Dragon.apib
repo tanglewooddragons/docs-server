@@ -1,0 +1,73 @@
+FORMAT: A1
+
+# Dragon
+
+This service handles actions connected with dragons - creating them, feeding, updating etc.
+
+## Dragon [/dragon/create]
+
+### Create dragon [POST]
+
++ Request (application/json)
+
+    + Body
+
+        {
+          'name': 'Azreal',
+          'aspect': 'chaos'
+        }
+
+    + Headers
+
+        Authentication: Bearer <token>
+
++ Response 422
+Missing request data
+
++ Response 201 (application/json)
+
+        {
+          'name': 'Azreal',
+          'aspect': 'chaos',
+          'owner': '8c08e52a-92b9-4fd3-aeb2-91d08aad7e6f',
+          'gender': 'male',
+          'level': 0,
+          'fed': false,
+          'born': 2017-10-26T16:51:59.000Z,
+        }
+
+## Dragon [/dragon/feed/{dragon_id}]
+
+### Feed dragon [POST]
+
++ Request (application/json)
+
+    + Parameters
+
+        + dragon_id: '8c08e52a-92b9-4fd3-aeb2-91d08aad7e6f' (required, string)
+
+    + Body
+
+        {
+          'food': 'meat'
+        }
+
++ Response 400
+Dragon not found
+
++ Response 400
+Invalid food type
+
++ Response 400
+Dragon is already fed
+
++ Response 200
+Dragon has been fed, return updated dragon object
+
+## Dragon [/dragon/{dragon_id}]
+
+### Get dragon [GET]
+
+### Update dragon [POST]
+
+### Remove dragon [DELETE]

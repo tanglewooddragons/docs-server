@@ -1,15 +1,10 @@
-FORMAT: 1A
+FORMAT: A1
 
-# Api
+# Auth
 
-This is the main entrypoint of the api, it handles auth and routing to other
-services
+This services handles creating accounts, login and logout
 
-## Group Account
-
-Account-related endpoints
-
-## Register [/register]
+## register [/register]
 
 ### Create a new account [POST]
 
@@ -19,7 +14,7 @@ Account-related endpoints
 
         {
           'username': 'Jason',
-          'email': 'ja@gmail.com',
+          'email': 'jason@gmail.com',
           'password': '123'
         }
 
@@ -71,6 +66,9 @@ Missing or wrong data
 + Response 200 (application/json)
 Login was successfull, responds with the user object
 
-## Reset password [POST]
+## Logout [/logout]
 
-### TODO
+### Logout of current account [GET]
+
++ Response 200 (application/json)
+Logout was successfull
