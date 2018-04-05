@@ -1,0 +1,125 @@
+# Group User
+User profile related endpoints
+
+## User [/user/{id}]
+
+### Get user profile [GET]
+
++ Parameters
+
+    + id: `d3317d5f-df85-4f7e-a4f0-f1d26fb0e594` (string, optional) - Id of the user
+
+        + Default: Id of the user requesting
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": "d3317d5f-df85-4f7e-a4f0-f1d26fb0e594",
+                "email": "test@test.com",
+                "username": "tester",
+                "registrationDate": "2018-04-05T16:50:38.831Z",
+                "confirmed": false,
+                "premium": false,
+                "role": "user",
+                "silver": 0,
+                "sapphires": 0,
+                "dragons": [],
+                "inventory": { 
+                    "ingredients": {},
+                    "items": {} 
+                }
+            }
+
++ Response 400 (application/json)
+
+    Recieved when user is not found
+
+    + Body
+
+## User [/user]
+
+### Update your profile [PUT]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
+    + Body
+
+            {
+                "avatar": "https://some.url/avatar",
+                "backgroundPicture": "http://nice.wallpapers/good_one",
+                "country": 'Sweden',
+                "dateOfBirth": '17-04-1992',
+                "bio": 'Some nice description la la la',
+            }
+
++ Response 200 (application/json)
+
+    Returns updated user object
+
+    + Body
+
+            {
+                "id": "d3317d5f-df85-4f7e-a4f0-f1d26fb0e594",
+                "email": "test@test.com",
+                "username": "tester",
+                "registrationDate": "2018-04-05T16:50:38.831Z",
+                "confirmed": false,
+                "premium": false,
+                "role": "user",
+                "silver": 0,
+                "sapphires": 0,
+                "dragons": [],
+                "inventory": { 
+                    "ingredients": {},
+                    "items": {} 
+                },
+                "avatar": "https://some.url/avatar",
+                "backgroundPicture": "http://nice.wallpapers/good_one",
+                "country": 'Sweden',
+                "dateOfBirth": '17-04-1992',
+                "bio": 'Some nice description la la la',
+            }
+
++ Response 400 (application/json)
+
+    Returend when there was an error updating profile
+
+    + Body
+
++ Response 422 (application/json)
+
+    Returned when provided data is invalid
+
+    + Body
+
+### Delete your profile [DELETE]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
++ Response 200 (application/json)
+
+    Returned when account has been deleted successfully
+
+    + Body
+
++ Response 400 (application/json)
+
+    Returned when there was an error deleting your profile
+
+    + Body
