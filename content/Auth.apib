@@ -1,0 +1,114 @@
+# Group Auth
+Account related endpoints
+
+## register [/register]
+
+### Create a new account [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "username": "Jason",
+                "email": "jason@gmail.com",
+                "password": "123"
+            }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "id": "d3317d5f-df85-4f7e-a4f0-f1d26fb0e594",
+                "email": "test@test.com",
+                "password": null,
+                "username": "tester",
+                "registrationDate": "2018-04-05T16:50:38.831Z",
+                "confirmed": false,
+                "premium": false,
+                "role": "user",
+                "silver": 0,
+                "sapphires": 0,
+                "inventory": { 
+                    "ingredients": {},
+                    "items": {} 
+                }
+            }
+
+
++ Response 400 (application/json)
+
+    Returned when passwords are not matching or when an error occured
+
+    + Body
+
++ Response 403 (application/json)
+
+    Recieved when email provided is already taken
+
+    + Body
+
++ Response 422 (application/json)
+
+    Recieved when data sent is not valid
+
+    + Body
+
+## Login [/login]
+
+### Login to an account [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "email": "john@gmail.com",
+                "password": "johnjava"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "id": "d3317d5f-df85-4f7e-a4f0-f1d26fb0e594",
+                "email": "john@gmail.com",
+                "password": null,
+                "username": "John Java",
+                "registrationDate": "2018-04-05T16:50:38.831Z",
+                "confirmed": false,
+                "premium": false,
+                "role": "user",
+                "silver": 0,
+                "sapphires": 0,
+                "inventory": { 
+                    "ingredients": {},
+                    "items": {} 
+                }
+            }
+
++ Response 400 (application/json)
+
+    Returned when email is incorrect
+
+    + Body
+
++ Response 401 (application/json)
+
+    Returned when password is incorrect
+
+    + Body
+
+## Logout [/logout]
+
+### Logout of current account [GET]
+
++ Response 200 (application/json)
+
+## Logout of all accounts [/logoutAll]
+
+### Logout of all accounts [GET]
+
++ Response 200 (application/json)

@@ -1,0 +1,11 @@
+{
+  "name": "docs-server",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "generate": "aglio -i ./content/V1.apib -o ./dist/index.html",
+    "build": "npm run clean && mkdir dist && npm run generate"
+  },
+  "dependencies": {
+    "aglio": "^2.3.0"
+  }
+}
