@@ -12,7 +12,8 @@ Account related endpoints
             {
                 "username": "Jason",
                 "email": "jason@gmail.com",
-                "password": "123"
+                "password": "123",
+                "passwordRepeat": "123"
             }
 
 + Response 201 (application/json)
@@ -21,9 +22,7 @@ Account related endpoints
 
             {
                 "id": "d3317d5f-df85-4f7e-a4f0-f1d26fb0e594",
-                "email": "test@test.com",
-                "password": null,
-                "username": "tester",
+                "username": "Jason",
                 "registrationDate": "2018-04-05T16:50:38.831Z",
                 "confirmed": false,
                 "premium": false,
@@ -74,8 +73,6 @@ Account related endpoints
 
             {
                 "id": "d3317d5f-df85-4f7e-a4f0-f1d26fb0e594",
-                "email": "john@gmail.com",
-                "password": null,
                 "username": "John Java",
                 "registrationDate": "2018-04-05T16:50:38.831Z",
                 "confirmed": false,
@@ -88,7 +85,8 @@ Account related endpoints
                     "ingredients": {},
                     "items": {} 
                 },
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjODM4YzcxLTcwMDItNDdhYi04Yjg4LTZmNGU5ZTkxMGVkOSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTIyOTYxMjk5LCJleHAiOjE1MjQ0ODQzNDcyMjB9.rMmWLQAvuYtO0p7Y5C_jLuIaKDZkxzx_xnfAeQ8CnAw"
+                "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjODM4YzcxLTcwMDItNDdhYi04Yjg4LTZmNGU5ZTkxMGVkOSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTIyOTYxMjk5LCJleHAiOjE1MjQ0ODQzNDcyMjB9.rMmWLQAvuYtO0p7Y5C_jLuIaKDZkxzx_xnfAeQ8CnAw",
+                "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0YjE0YzU5LTEwZmUtNDA1OC1hNWM4LTUyMzA2MzZjNDgyNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTIzODA5Mzk5LCJleHAiOjE1MjUzMzMyOTU3MDN9.mUqOXdPbPkToPOnahE2_S8PyTM_Cz_1QU9x5GQmZH50"
             }
 
 + Response 400 (application/json)
@@ -102,6 +100,30 @@ Account related endpoints
     Returned when password is incorrect
 
     + Body
+
+## Refresh Token [/refreshToken]
+
+### Refresh Access Token [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
+    + Body
+
+            {
+                "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0YjE0YzU5LTEwZmUtNDA1OC1hNWM4LTUyMzA2MzZjNDgyNSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTIzODA5Mzk5LCJleHAiOjE1MjUzMzMyOTU3MDN9.mUqOXdPbPkToPOnahE2_S8PyTM_Cz_1QU9x5GQmZH50"
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImFjODM4YzcxLTcwMDItNDdhYi04Yjg4LTZmNGU5ZTkxMGVkOSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTIyOTYxMjk5LCJleHAiOjE1MjQ0ODQzNDcyMjB9.rMmWLQAvuYtO0p7Y5C_jLuIaKDZkxzx_xnfAeQ8CnAw"
+            }
 
 ## Logout [/logout]
 
