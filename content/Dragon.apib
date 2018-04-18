@@ -1,0 +1,175 @@
+# Group Dragon
+
+## Dragon [/dragon/create]
+
+### Create dragon [POST]
+
++ Request (application/json)
+
+    + Body
+
+            {
+                'name': 'Azreal',
+                'aspect': 'chaos'
+            }
+
+    + Headers
+
+            Authentication: Bearer <token>
+
++ Response 422 (application/json)
+
+    Returned when provided data is invalid
+
+    + Body
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+            'name': 'Azreal',
+            'aspect': 'chaos',
+            'owner': '8c08e52a-92b9-4fd3-aeb2-91d08aad7e6f',
+            'gender': 'male',
+            'level': 0,
+            'fed': false,
+            'born': 2017-10-26T16:51:59.000Z,
+            }
+
+## Dragon [/dragon/feed/{dragon_id}]
+
+### Feed dragon [POST]
+
++ Request (application/json)
+
+    + Parameters
+
+        + dragon_id: '8c08e52a-92b9-4fd3-aeb2-91d08aad7e6f' (required, string)
+
+    + Body
+
+            {
+            'food': 'meat'
+            }
+
++ Response 400 (application/json)
+
+    Returned when dragon was not fed with appropriate reason
+
+    + Body
+
++ Response 200 (application/json)
+
+    Dragon has been fed, return updated dragon object
+
+    + Body
+
+## Dragon [/dragon/{id}]
+
++ Parameters
+
+    + id: `d3317d5f-df85-4f7e-a4f0-f1d26fb0e594` (string, required) - Id of the dragon
+
+### Get dragon [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                owner: '08c7999e-d089-4349-a7ed-8b1dbf962905',
+                name: 'Basil',
+                gender: 'male',
+                aspect: 'fire',
+                description: '',
+                born: '2018-04-18T14:51:25.080Z',
+                bgImage: '',
+                fed: false,
+                level: 0,
+                stats: {
+                    agl: 0,
+                    con: 0,
+                    int: 0,
+                    lck: 0,
+                    str: 0,
+                    wlp: 0
+                },
+                id: '17c80bf2-8df8-429f-a35b-88bf7bd42c71'
+            }
+
++ Response 400 (application/json)
+
+    Recieved when dragon was not found
+
+    + Body
+
+### Update dragon [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
+    + Body
+
+            {
+                "bgImage": "http://nice.wallpapers/good_one",
+                "description": 'Nice',
+            }
+
++ Response 200 (application/json)
+
+    Returns updated dragon
+
+    + Body
+
+            {
+                owner: '08c7999e-d089-4349-a7ed-8b1dbf962905',
+                name: 'Basil',
+                gender: 'male',
+                aspect: 'fire',
+                born: '2018-04-18T14:51:25.080Z',
+                bgImage: "http://nice.wallpapers/good_one",
+                description: 'Nice',
+                fed: false,
+                level: 0,
+                stats: {
+                    agl: 0,
+                    con: 0,
+                    int: 0,
+                    lck: 0,
+                    str: 0,
+                    wlp: 0
+                },
+                id: '17c80bf2-8df8-429f-a35b-88bf7bd42c71'
+            }
+
++ Response 400 (application/json)
+
+    Returned when updating was not successfull
+
+    + Body
+
+### Remove dragon [DELETE]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
++ Response 200 (application/json)
+
++ Response 400 (application/json)
+
+    Returned when deleting was not successfull
+
+    + Body
