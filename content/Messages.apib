@@ -1,0 +1,112 @@
+# Group Messages
+
+## Messages [/message/all]
+
+### Get all messages (received and sent) [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                sent: [{
+                    to: 'd3317d5f-df85-4f7e-a4f0-f1d26fb0e594',
+                    topic: 'Some message sent to other user',
+                    text: 'Some text'
+                }],
+                received: [{
+                    from: 'd3317d5f-df85-4f7e-a4f0-f1d26fb0e594',
+                    topic: 'Received message',
+                    text: 'Hey, I got mail!'
+                }]
+            }
+
+## Received Messages [/message/received]
+
+### Get received messages [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    from: 'd3317d5f-df85-4f7e-a4f0-f1d26fb0e594',
+                    topic: 'Received message',
+                    text: 'Hey, I got mail!'
+                }
+            ]
+
+## Sent Messages [/message/sent]
+
+### Get sent messages [GET]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
++ Response 200 (application/json)
+
+    + Body
+
+            [
+                {
+                    to: 'd3317d5f-df85-4f7e-a4f0-f1d26fb0e594',
+                    topic: 'Some message sent to other user',
+                    text: 'Some text'
+                }
+            ]
+
+## Send new message [/message]
+
+### Send new message [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
+    + Body
+
+            {
+                to: 'd3317d5f-df85-4f7e-a4f0-f1d26fb0e594',
+                topic: 'Sending a message!',
+                text: 'Nice'
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                to: 'd3317d5f-df85-4f7e-a4f0-f1d26fb0e594',
+                topic: 'Sending a message!',
+                text: 'Nice'
+            }
+
++ Response 400
+
+    Received when there was an error creating the message
+
+    + Body
+
++ Response 422
+
+    Received when there was an error validating message data
+
+    + Body
