@@ -28,13 +28,13 @@
     + Body
 
             {
-            'name': 'Azreal',
-            'aspect': 'chaos',
-            'owner': '8c08e52a-92b9-4fd3-aeb2-91d08aad7e6f',
-            'gender': 'male',
-            'level': 0,
-            'fed': false,
-            'born': 2017-10-26T16:51:59.000Z,
+                'name': 'Azreal',
+                'aspect': 'chaos',
+                'owner': '8c08e52a-92b9-4fd3-aeb2-91d08aad7e6f',
+                'gender': 'male',
+                'level': 0,
+                'fed': false,
+                'born': 2017-10-26T16:51:59.000Z,
             }
 
 ## Dragon [/dragon/feed/{dragon_id}]
@@ -62,6 +62,49 @@
 + Response 200 (application/json)
 
     Dragon has been fed, return updated dragon object
+
+    + Body
+
+## Dragon [/dragon/task]
+
+### Send dragon on task [POST]
+
++ Request (application/json)
+
+    + Headers
+
+            Authentication: Bearer <token>
+
+    + Body
+
+            You need to specify which dragon to send,
+            provide a duration (in hours between 1 and 8), and location
+
+            {
+                dragonId: 'd3317d5f-df85-4f7e-a4f0-f1d26fb0e594',
+                duration: '2',
+                location: 'Githan Volcano'
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                startTime: 'Thu May 17 2018 13:19:44 GMT+0200 (Central European Daylight Time)',
+                endTime: 'Thu May 17 2018 15:19:44 GMT+0200 (Central European Daylight Time)' 
+            }
+
++ Response 400
+
+    Received when there was an error setting the task
+    or selected dragon was busy (with appropriate error)
+
+    + Body
+
++ Response 422
+
+    Received when there was an error validating data
 
     + Body
 
